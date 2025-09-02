@@ -1,0 +1,44 @@
+---
+// データとロジックの分離
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import { profileData } from '../data/profile';
+
+const { title, description } = profileData;
+---
+
+<Layout title={title} description={description}>
+    <main class="container">
+        <footer class="footer">
+            <Hero />
+            <p>© 2025 kiaamaaio</p>
+        </footer>
+    </main>
+</Layout>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 2rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 1rem;
+            gap: 2rem;
+        }
+    }
+</style>

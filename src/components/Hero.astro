@@ -1,0 +1,84 @@
+---
+import { profileData } from '../data/profile';
+
+const { name, location, profileImage } = profileData;
+---
+
+<section class="hero card">
+    <div class="profile-image">
+        <img
+                src={profileImage}
+                alt="Profile picture"
+                width="200"
+                height="200"
+        />
+    </div>
+
+    <h1 class="name">{name}</h1>
+    <p class="location">{location}</p>
+</section>
+
+<style>
+    .hero {
+        text-align: center;
+        padding: 3rem 2rem;
+    }
+
+    .profile-image {
+        margin-bottom: 2rem;
+    }
+
+    .profile-image img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-image img:hover {
+        transform: scale(1.05);
+    }
+
+    .name {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .title {
+        font-size: 1.25rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+    }
+
+    .location {
+        font-size: 1rem;
+        color: #888;
+        margin-bottom: 1.5rem;
+    }
+
+    .bio {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 600px;
+        margin: 0 auto;
+        white-space: pre-line;
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            padding: 2rem 1.5rem;
+        }
+
+        .name {
+            font-size: 2rem;
+        }
+    }
+</style>
