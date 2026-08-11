@@ -1,5 +1,5 @@
 # Development (for docker-compose)
-FROM node:22-alpine AS development
+FROM node:24-alpine AS development
 WORKDIR /app
 
 # パッケージファイルをコピー
