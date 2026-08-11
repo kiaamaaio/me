@@ -1,16 +1,36 @@
 ---
 // データとロジックの分離
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import { profileData } from '../data/profile';
 
 const { title, description } = profileData;
+
+const links = (await getCollection('links')).sort((a, b) =>
+    a.data.title.localeCompare(b.data.title)
+);
 ---
 
 <Layout title={title} description={description}>
     <main class="container">
+        <Hero />
+
+        <section class="links card">
+            <h2>Links</h2>
+            <ul class="link-list">
+                {links.map(({ data }) => (
+                    <li>
+                        <a class="link-item" href={data.url} target="_blank" rel="noopener noreferrer">
+                            <span class="link-title">{data.title}</span>
+                            <span class="link-description">{data.description}</span>
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </section>
+
         <footer class="footer">
-            <Hero />
             <p>© 2025 kiaamaaio</p>
         </footer>
     </main>
@@ -33,6 +53,39 @@ const { title, description } = profileData;
         color: rgba(255, 255, 255, 0.8);
         font-size: 0.9rem;
         margin-top: auto;
+    }
+
+    .link-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .link-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem 1.25rem;
+        border-radius: 12px;
+        background: rgba(102, 126, 234, 0.08);
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .link-item:hover {
+        background: rgba(102, 126, 234, 0.16);
+        transform: translateY(-2px);
+    }
+
+    .link-title {
+        font-weight: 700;
+        color: #333;
+    }
+
+    .link-description {
+        font-size: 0.9rem;
+        color: #666;
     }
 
     @media (max-width: 768px) {

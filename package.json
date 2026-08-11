@@ -7,14 +7,16 @@
     "start": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "astro": "^5.13.0"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "wrangler": "^4.0.0"
   },
   "engines": {
     "node": ">=22.0.0"

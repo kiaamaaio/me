@@ -15,14 +15,3 @@ services:
       - NODE_ENV=development
     stdin_open: true
     tty: true
-
-  # 本番環境（テスト用）
-  app-prod:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: production
-    ports:
-      - "8080:80"
-    profiles:
-      - production

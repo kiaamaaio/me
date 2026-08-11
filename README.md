@@ -1,1 +1,61 @@
 # me
+
+個人用プロフィール/リンク集サイト。Astro製の静的サイトとして [Cloudflare Workers (Static Assets)](https://developers.cloudflare.com/workers/static-assets/) にデプロイする。
+
+## ローカル開発
+
+```bash
+npm install
+npm run dev
+```
+
+Dockerで動かす場合:
+
+```bash
+docker compose up app-dev
+```
+
+`http://localhost:3000` で確認できる。
+
+## リンクの追加方法
+
+`src/content/links/` にMarkdownファイルを1つ追加するだけでトップページのリンク一覧に反映される。
+
+```markdown
+---
+title: GitHub
+url: https://github.com/yourname
+description: メインのGitHubアカウント
+icon: github
+category: dev
+---
+```
+
+## ビルド
+
+```bash
+npm run build
+```
+
+`dist/` に静的ファイルが出力される。
+
+## デプロイ
+
+初回のみ `npx wrangler login` でCloudflareアカウントにログインしてから:
+
+```bash
+npm run deploy
+```
+
+（`wrangler deploy` のエイリアス。`wrangler.jsonc` の設定に従い `dist/` をCloudflare Workersにデプロイする）
+
+GitHubリポジトリと連携すれば `git push` で自動ビルド・デプロイも可能（下記「ダッシュボードでの手動設定」参照）。
+
+## ダッシュボードでの手動設定（Claude Codeでは自動化できない項目）
+
+以下はすべてCloudflareダッシュボード上での操作が必要。
+
+- **カスタムドメインの紐付け**: Worker の Settings → Domains & Routes から `roguesch.net` を紐付ける（DNSレコードは自動作成される）
+- **GitHub連携によるCI/CD**: ビルドコマンド `npm run build`、出力ディレクトリ `dist` を設定
+- **Cloudflare Web Analytics**: ダッシュボードの Web Analytics でサイトを登録し、発行されたトークンをビルド環境変数 `PUBLIC_CF_BEACON_TOKEN` としてWorkerの設定に追加する（`.env.example` を参照。トークンはリポジトリにコミットしない）
+- **Bot Fight Mode**: 有効化を推奨（無料・コード変更不要）
