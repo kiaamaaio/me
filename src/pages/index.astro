@@ -5,14 +5,14 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import { profileData } from '../data/profile';
 
-const { title, description } = profileData;
+const { pageTitle, description } = profileData;
 
 const links = (await getCollection('links')).sort((a, b) =>
     a.data.title.localeCompare(b.data.title)
 );
 ---
 
-<Layout title={title} description={description}>
+<Layout title={pageTitle} description={description}>
     <main class="container">
         <Hero />
 

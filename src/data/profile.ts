@@ -1,6 +1,6 @@
 // データ型の定義
 export interface ProfileData {
-    title: string;
+    pageTitle: string;
     description: string;
     name: string;
     location: string;
@@ -9,7 +9,7 @@ export interface ProfileData {
 
 // プロフィールデータ
 export const profileData: ProfileData = {
-    title: "Profile",
+    pageTitle: "Profile",
     description: "Developer",
     name: "kiaamaaio",
     location: "Japan",

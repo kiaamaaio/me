@@ -1,11 +1,15 @@
 ---
+import { siteConfig } from '../data/site';
+
 interface Props {
-    title: string;
+    title?: string;
     description: string;
     ogImage?: string;
 }
 
 const { title, description, ogImage = '/og-image.jpg' } = Astro.props;
+
+const pageTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(ogImage, Astro.site);
@@ -18,18 +22,18 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:url" content={canonicalUrl} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
+    <meta property="twitter:title" content={pageTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageUrl} />
 
