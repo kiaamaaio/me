@@ -7,7 +7,6 @@ const links = defineCollection({
         title: z.string(),
         url: z.string(),
         description: z.string(),
-        icon: z.string().optional(),
         category: z.string().optional(),
     }),
 });
