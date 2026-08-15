@@ -9,7 +9,7 @@ import { linkIconPalette, getLinkInitial } from '../data/linkIcons';
 const { pageTitle, description } = profileData;
 
 const links = (await getCollection('links'))
-    .sort((a, b) => a.data.title.localeCompare(b.data.title))
+    .sort((a, b) => a.data.order - b.data.order)
     .map((link, index) => ({
         ...link,
         icon: {
