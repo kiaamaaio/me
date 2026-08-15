@@ -1,6 +1,6 @@
 ---
 title: Instagram
 url: https://www.instagram.com/kiaamaaio
-description: 写真や日常の記録
+description: 日常の写真を載せる場所
 category: sns
 ---

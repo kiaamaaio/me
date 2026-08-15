@@ -1,6 +1,6 @@
 ---
 title: X
 url: https://x.com/kiaamaaio
-description: 日々の発信
+description: ゲームを中心に雑多な事を呟きつつ情報収集している場所
 category: sns
 ---
