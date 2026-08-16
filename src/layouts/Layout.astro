@@ -59,8 +59,12 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         box-sizing: border-box;
     }
 
+    /* 欧文は Inter、和文は Inter にグリフが無いため OS 標準の和文フォントへ明示的にフォールバックする
+       （指定しないとブラウザ既定の和文フォントに落ちて環境ごとに字面と太さが変わる） */
     html {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP',
+        'Yu Gothic Medium', 'Yu Gothic', Meiryo, sans-serif;
         line-height: 1.6;
     }
 

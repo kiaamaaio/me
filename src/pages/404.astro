@@ -29,9 +29,15 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .code {
-        font-size: 1.75rem;
-        margin-bottom: 2rem;
-        color: #333;
+        font-size: clamp(3rem, 12vw, 4rem);
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        margin-bottom: 1rem;
+        color: #6f5539;
+    }
+
+    .not-found p {
+        text-wrap: balance;
     }
 
     .home-link {

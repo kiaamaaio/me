@@ -74,7 +74,8 @@ const links = (await getCollection('links'))
 
     .link-item {
         display: flex;
-        align-items: center;
+        /* 説明文が2行以上に折り返してもアイコンがタイトルからずれないよう上端で揃える */
+        align-items: flex-start;
         gap: 0.9rem;
         padding: 1rem 1.25rem;
         border-radius: 12px;
