@@ -11,7 +11,7 @@ export interface ProfileData {
 export const profileData: ProfileData = {
     pageTitle: "Profile",
     description: "Developer",
-    name: "kiaamaaio",
+    name: "kiaamaaio / ごろむ",
     location: "Japan",
     profileImage: "/profile.jpg"
 };
