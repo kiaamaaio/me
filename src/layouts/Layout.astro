@@ -13,7 +13,6 @@ const pageTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(ogImage, Astro.site);
-const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
 
 <html lang="ja">
@@ -46,10 +45,6 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 
 <body>
 <slot />
-{cfBeaconToken && (
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon={`{"token": "${cfBeaconToken}"}`}></script>
-)}
 </body>
 
 <style is:global>

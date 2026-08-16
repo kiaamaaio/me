@@ -72,7 +72,6 @@ GitHubリポジトリと連携すれば `git push` で自動ビルド・デプ�
 
 - **カスタムドメインの紐付け**: `wrangler.jsonc` の `name`（Worker名 `me`）で作成されたWorkerの Settings → Domains & Routes から `roguesch.net` を紐付ける（DNSレコードは自動作成される）
 - **GitHub連携によるCI/CD**: ビルドコマンド `npm run build`、出力ディレクトリ `dist` を設定
-- **Cloudflare Web Analytics**: ダッシュボードの Web Analytics でサイトを登録し、発行されたトークンをビルド環境変数 `PUBLIC_CF_BEACON_TOKEN` としてWorkerの設定に追加する（`.env.example` を参照。トークンはリポジトリにコミットしない）
 - **Bot Fight Mode**: 有効化を推奨（無料・コード変更不要）
 
 ## License
