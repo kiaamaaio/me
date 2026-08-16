@@ -39,19 +39,20 @@ const links = (await getCollection('links'))
                 ))}
             </ul>
         </section>
-
-        <footer class="footer">
-            <p>© 2025 kiaamaaio</p>
-        </footer>
     </main>
+
+    <footer class="footer">
+        <p>© 2025 kiaamaaio</p>
+    </footer>
 </Layout>
 
 <style>
     .container {
+        width: 100%;
         max-width: 800px;
         margin: 0 auto;
         padding: 2rem;
-        min-height: 100vh;
+        flex: 1;
         display: flex;
         flex-direction: column;
         gap: 3rem;
@@ -59,10 +60,9 @@ const links = (await getCollection('links'))
 
     .footer {
         text-align: center;
-        padding: 2rem;
+        padding: 3rem 2rem;
         color: rgba(255, 255, 255, 0.8);
         font-size: 0.9rem;
-        margin-top: auto;
     }
 
     .link-list {
@@ -121,6 +121,10 @@ const links = (await getCollection('links'))
         .container {
             padding: 1rem;
             gap: 2rem;
+        }
+
+        .footer {
+            padding: 2rem 1rem;
         }
     }
 </style>
