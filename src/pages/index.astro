@@ -29,7 +29,7 @@ const links = (await getCollection('links'))
                 {links.map(({ data, icon }) => (
                     <li>
                         <a class="link-item" href={data.url} target="_blank" rel="noopener noreferrer">
-                            <span class="link-icon" style={`background-color: ${icon.color};`}>{icon.letter}</span>
+                            <span class="link-icon" style={`background-color: ${icon.color};`} aria-hidden="true">{icon.letter}</span>
                             <span class="text-block">
                                 <span class="link-title">{data.title}</span>
                                 <span class="link-description">{data.description}</span>
@@ -61,7 +61,7 @@ const links = (await getCollection('links'))
     .footer {
         text-align: center;
         padding: 3rem 2rem;
-        color: rgba(255, 255, 255, 0.8);
+        color: #fff;
         font-size: 0.9rem;
     }
 
@@ -85,6 +85,11 @@ const links = (await getCollection('links'))
 
     .link-item:hover {
         background: rgba(122, 93, 63, 0.13);
+    }
+
+    .link-item:focus-visible {
+        outline: 3px solid #6f5539;
+        outline-offset: 2px;
     }
 
     .link-icon {

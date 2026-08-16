@@ -8,7 +8,7 @@ const { name, location, profileImage } = profileData;
     <div class="profile-image">
         <img
                 src={profileImage}
-                alt="Profile picture"
+                alt="プロフィール写真"
                 width="200"
                 height="200"
         />
@@ -54,7 +54,16 @@ const { name, location, profileImage } = profileData;
 
     .location {
         font-size: 1rem;
-        color: #888;
+        color: #6b6b6b;
+    }
+
+    /* グラデーション文字は強制カラーモードで不可視になるため、通常の文字色に戻す */
+    @media (forced-colors: active) {
+        .name {
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            color: CanvasText;
+        }
     }
 
     @media (max-width: 768px) {

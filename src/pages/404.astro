@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="404 Not Found" description="ページが見つかりませんでした">
     <main class="container">
         <section class="not-found card">
-            <h2>404</h2>
+            <h1 class="code">404</h1>
             <p>お探しのページは見つかりませんでした。</p>
             <a class="home-link" href="/">トップページに戻る</a>
         </section>
@@ -28,6 +28,12 @@ import Layout from '../layouts/Layout.astro';
         text-align: center;
     }
 
+    .code {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        color: #333;
+    }
+
     .home-link {
         display: inline-block;
         margin-top: 1.5rem;
@@ -38,5 +44,11 @@ import Layout from '../layouts/Layout.astro';
 
     .home-link:hover {
         text-decoration: underline;
+    }
+
+    .home-link:focus-visible {
+        outline: 3px solid #6f5539;
+        outline-offset: 3px;
+        border-radius: 4px;
     }
 </style>

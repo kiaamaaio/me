@@ -89,6 +89,18 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         color: #333;
     }
 
+    /* アニメーションを抑制する設定を尊重する */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
     @media (max-width: 768px) {
         .card {
             padding: 2rem 1.5rem;
