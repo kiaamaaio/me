@@ -1,0 +1,27 @@
+# イメージのビルドコンテキストから除外するもの。
+# 特に node_modules を除外しないと、Dockerfile の COPY . . が
+# コンテナ内で npm install した node_modules をホスト側のもので上書きしてしまう
+# （ホストとコンテナでOS・アーキテクチャが異なるとネイティブモジュールが壊れる）。
+node_modules
+npm-debug.log*
+
+# コンテナ側で生成されるビルド成果物とキャッシュ
+dist
+.astro
+.wrangler
+
+# バージョン管理・ツール設定
+.git
+.gitignore
+.claude
+.vscode
+.idea
+
+# 環境変数（例示用のテンプレートだけは残す）
+.env
+.env.*
+!.env.example
+
+# OSが生成するファイル
+.DS_Store
+Thumbs.db
