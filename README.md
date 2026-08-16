@@ -4,6 +4,8 @@
 
 ## ローカル開発
 
+Node.js 24以上が必要（`.nvmrc` 参照。nvm利用時は `nvm use`）。
+
 ```bash
 npm install
 npm run dev
@@ -39,6 +41,11 @@ order: 4
   隣り合うリンクが似た色になった場合はここで明示する。
   YAMLでは `#` がコメント開始扱いになるため、必ずクォートで囲む
 
+## プロフィール/サイト名の編集方法
+
+- `src/data/profile.ts`: プロフィールカードの内容（名前、説明、所在地、プロフィール画像パス）
+- `src/data/site.ts`: サイト名（`<title>` やOGP等に使われる）
+
 ## ビルド
 
 ```bash
@@ -63,7 +70,11 @@ GitHubリポジトリと連携すれば `git push` で自動ビルド・デプ�
 
 以下はすべてCloudflareダッシュボード上での操作が必要。
 
-- **カスタムドメインの紐付け**: Worker の Settings → Domains & Routes から `roguesch.net` を紐付ける（DNSレコードは自動作成される）
+- **カスタムドメインの紐付け**: `wrangler.jsonc` の `name`（Worker名 `me`）で作成されたWorkerの Settings → Domains & Routes から `roguesch.net` を紐付ける（DNSレコードは自動作成される）
 - **GitHub連携によるCI/CD**: ビルドコマンド `npm run build`、出力ディレクトリ `dist` を設定
 - **Cloudflare Web Analytics**: ダッシュボードの Web Analytics でサイトを登録し、発行されたトークンをビルド環境変数 `PUBLIC_CF_BEACON_TOKEN` としてWorkerの設定に追加する（`.env.example` を参照。トークンはリポジトリにコミットしない）
 - **Bot Fight Mode**: 有効化を推奨（無料・コード変更不要）
+
+## License
+
+[MIT](LICENSE)
