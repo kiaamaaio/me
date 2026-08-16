@@ -9,6 +9,12 @@ WORKDIR /app
 RUN chown node:node /app
 USER node
 
+# compose側で /app/.astro を匿名ボリュームにしているが、
+# イメージに存在しないパスに匿名ボリュームを作るとDockerがroot所有で
+# マウントポイントを作り、nodeユーザーが書き込めなくなる。
+# ボリュームの初期化元として、node所有の空ディレクトリを用意しておく
+RUN mkdir -p /app/.astro
+
 # パッケージファイルをコピー
 COPY --chown=node:node package*.json ./
 
