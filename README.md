@@ -26,10 +26,18 @@ docker compose up app-dev
 title: GitHub
 url: https://github.com/yourname
 description: メインのGitHubアカウント
-icon: github
 category: dev
+color: "#b8862f"
+order: 4
 ---
 ```
+
+- `order`: 表示順（必須・昇順）
+- `category`: 任意のラベル（現状は表示に使っていない）
+- `color`: 頭文字アイコンの背景色。省略するとタイトルから自動で決まる
+  （`src/data/linkIcons.ts` のパレットから選ばれる）。
+  隣り合うリンクが似た色になった場合はここで明示する。
+  YAMLでは `#` がコメント開始扱いになるため、必ずクォートで囲む
 
 ## ビルド
 

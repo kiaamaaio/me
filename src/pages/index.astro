@@ -4,17 +4,17 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import { profileData } from '../data/profile';
-import { linkIconPalette, getLinkInitial } from '../data/linkIcons';
+import { getLinkInitial, getLinkIconColor } from '../data/linkIcons';
 
 const { pageTitle, description } = profileData;
 
 const links = (await getCollection('links'))
     .sort((a, b) => a.data.order - b.data.order)
-    .map((link, index) => ({
+    .map((link) => ({
         ...link,
         icon: {
             letter: getLinkInitial(link.data.title),
-            color: linkIconPalette[index % linkIconPalette.length],
+            color: link.data.color ?? getLinkIconColor(link.data.title),
         },
     }));
 ---
@@ -26,8 +26,8 @@ const links = (await getCollection('links'))
         <section class="links card">
             <h2>Links</h2>
             <ul class="link-list">
-                {links.map(({ data, icon }) => (
-                    <li>
+                {links.map(({ data, icon }, index) => (
+                    <li style={`--delay: ${160 + index * 60}ms;`}>
                         <a class="link-item" href={data.url} target="_blank" rel="noopener noreferrer">
                             <span class="link-icon" style={`background-color: ${icon.color};`} aria-hidden="true">{icon.letter}</span>
                             <span class="text-block">
@@ -49,7 +49,7 @@ const links = (await getCollection('links'))
 <style>
     .container {
         width: 100%;
-        max-width: 800px;
+        max-width: 640px;
         margin: 0 auto;
         padding: 2rem;
         flex: 1;
@@ -63,6 +63,7 @@ const links = (await getCollection('links'))
         padding: 3rem 2rem;
         color: #fff;
         font-size: 0.9rem;
+        animation-delay: 420ms;
     }
 
     .link-list {
@@ -81,11 +82,13 @@ const links = (await getCollection('links'))
         border-radius: 12px;
         background: rgba(122, 93, 63, 0.1);
         text-decoration: none;
-        transition: background 0.2s ease;
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .link-item:hover {
-        background: rgba(122, 93, 63, 0.13);
+        background: rgba(122, 93, 63, 0.18);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(111, 85, 57, 0.2);
     }
 
     .link-item:focus-visible {
@@ -121,6 +124,16 @@ const links = (await getCollection('links'))
     .link-description {
         font-size: 0.9rem;
         color: #666;
+    }
+
+    /* カードとリンク行を少しずつ遅らせて表示する */
+    .links {
+        animation-delay: 80ms;
+    }
+
+    .link-list li {
+        animation: rise-in 0.5s ease-out both;
+        animation-delay: var(--delay);
     }
 
     @media (max-width: 768px) {
