@@ -64,6 +64,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
        （指定しないとブラウザ既定の和文フォントに落ちて環境ごとに字面と太さが変わる） */
     html {
         color-scheme: light;
+        scrollbar-gutter: stable;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
         'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP',
         'Yu Gothic Medium', 'Yu Gothic', Meiryo, sans-serif;
@@ -83,12 +84,15 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         color: #333;
     }
 
-    /* 表示時にわずかに持ち上げながらフェードインさせる。
-       遅延は各ページ側で指定して段差をつける */
+    /* 表示時にわずかに降りてきながらフェードインさせる。
+       遅延は各ページ側で指定して段差をつける。
+       開始位置を最終位置より下にすると、アニメーション中だけ文書の高さが
+       一時的に最終値を超えてスクロールバーが明滅する（Chromeで顕著）ため、
+       開始位置は必ず最終位置と同じか上側にする */
     @keyframes rise-in {
         from {
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(-8px);
         }
         to {
             opacity: 1;
