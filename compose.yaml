@@ -5,6 +5,9 @@ services:
       context: .
       dockerfile: Dockerfile
       target: development
+    # マウントしたソースに生成されるファイルをホストのユーザー所有にする
+    # （Dockerfileの USER node と同じ uid/gid。ホスト側が 1000 以外なら合わせて変更する）
+    user: "1000:1000"
     ports:
       - "3000:3000"
     volumes:
