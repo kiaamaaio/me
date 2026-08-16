@@ -27,5 +27,5 @@ COPY --chown=node:node . .
 # ポートを公開
 EXPOSE 3000
 
-# 開発サーバーを起動
-CMD ["npm", "run", "dev", "--", "--host"]
+# 開発サーバーを起動（package.json の dev スクリプトが既に --host を付けている）
+CMD ["npm", "run", "dev"]
