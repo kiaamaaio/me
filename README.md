@@ -4,7 +4,7 @@
 
 ## ローカル開発
 
-Node.js 24以上が必要（`.nvmrc` 参照。nvm利用時は `nvm use`）。
+Node.js 26以上が必要（`.nvmrc` 参照。nvm利用時は `nvm use`）。
 
 ```bash
 npm install
