@@ -32,7 +32,7 @@ const links = (await getCollection('links'))
                             <span class="link-icon" style={`background-color: ${icon.color};`} aria-hidden="true">{icon.letter}</span>
                             <span class="text-block">
                                 <span class="link-title">{data.title}</span>
-                                <span class="link-description">{data.description}</span>
+                                {data.description && <span class="link-description">{data.description}</span>}
                             </span>
                         </a>
                     </li>

@@ -27,7 +27,6 @@ docker compose up app-dev
 ---
 title: GitHub
 url: https://github.com/yourname
-description: メインのGitHubアカウント
 category: dev
 color: "#b8862f"
 order: 4
@@ -35,6 +34,7 @@ order: 4
 ```
 
 - `order`: 表示順（必須・昇順）
+- `description`: リンク名の下に添える短い説明（任意）。省略すると表示しない
 - `category`: 任意のラベル（現状は表示に使っていない）
 - `color`: 頭文字アイコンの背景色。省略するとタイトルから自動で決まる
   （`src/data/linkIcons.ts` のパレットから選ばれる）。
