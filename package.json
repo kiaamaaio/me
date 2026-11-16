@@ -11,14 +11,14 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "astro": "^7.2.0"
+    "astro": "^7.4.12"
   },
   "devDependencies": {
-    "@astrojs/ts-plugin": "^1.10.10",
+    "@astrojs/ts-plugin": "^1.11.0",
     "typescript": "^5.9.3",
-    "wrangler": "^4.120.1"
+    "wrangler": "^4.163.0"
   },
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=26.0.0"
   }
 }

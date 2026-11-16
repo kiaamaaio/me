@@ -1,5 +1,5 @@
 # Development (for docker-compose)
-FROM node:24-alpine AS development
+FROM node:26-alpine AS development
 WORKDIR /app
 
 # rootで実行すると、マウントしたソースに生成される .astro などが
